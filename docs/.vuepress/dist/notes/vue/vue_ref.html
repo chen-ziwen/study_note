@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue3 响应式API | chiko学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.8">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/study_note/assets/css/0.styles.c1856af0.css" as="style"><link rel="preload" href="/study_note/assets/js/app.5b9cbb0b.js" as="script"><link rel="preload" href="/study_note/assets/js/2.5695e3c8.js" as="script"><link rel="preload" href="/study_note/assets/js/12.beea3bc9.js" as="script"><link rel="prefetch" href="/study_note/assets/js/10.13f7d545.js"><link rel="prefetch" href="/study_note/assets/js/11.6f7f20a4.js"><link rel="prefetch" href="/study_note/assets/js/13.8565cd4b.js"><link rel="prefetch" href="/study_note/assets/js/3.243b5a95.js"><link rel="prefetch" href="/study_note/assets/js/4.4cecf048.js"><link rel="prefetch" href="/study_note/assets/js/5.9a848f5b.js"><link rel="prefetch" href="/study_note/assets/js/6.e7ab7c5f.js"><link rel="prefetch" href="/study_note/assets/js/7.162cbae0.js"><link rel="prefetch" href="/study_note/assets/js/8.91471944.js"><link rel="prefetch" href="/study_note/assets/js/9.9944c0ca.js">
+    <link rel="stylesheet" href="/study_note/assets/css/0.styles.c1856af0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/study_note/" class="home-link router-link-active"><img src="/study_note/assets/img/logo.png" alt="chiko学习笔记" class="logo"> <span class="site-name can-hide">chiko学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端知识" class="dropdown-title"><span class="title">前端知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端知识" class="mobile-dropdown-title"><span class="title">前端知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/h5.html" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/js.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/ts.html" class="nav-link">
+  TypeScript
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/sass.html" class="nav-link">
+  Sass
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/vue/vue2_base.html" class="nav-link">
+  Vue
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/react.html" class="nav-link">
+  React
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/git.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/nodejs.html" class="nav-link">
+  Nodejs
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/study_note/guide/" class="nav-link">
+  问题解决
+</a></div> <a href="https://github.com/chen-ziwen" target="_blank" rel="noopener noreferrer" class="repo-link">
+    github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端知识" class="dropdown-title"><span class="title">前端知识</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端知识" class="mobile-dropdown-title"><span class="title">前端知识</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/h5.html" class="nav-link">
+  HTML&amp;CSS
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/js.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/ts.html" class="nav-link">
+  TypeScript
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/sass.html" class="nav-link">
+  Sass
+</a></li></ul></li><li class="dropdown-item"><h4>
+          框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/vue/vue2_base.html" class="nav-link">
+  Vue
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/react.html" class="nav-link">
+  React
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/study_note/notes/git.html" class="nav-link">
+  Git
+</a></li><li class="dropdown-subitem"><a href="/study_note/notes/nodejs.html" class="nav-link">
+  Nodejs
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/study_note/guide/" class="nav-link">
+  问题解决
+</a></div> <a href="https://github.com/chen-ziwen" target="_blank" rel="noopener noreferrer" class="repo-link">
+    github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/study_note/notes/vue/vue2_base.html" class="sidebar-link">Vue2基础</a></li><li><a href="/study_note/notes/vue/vue3_base.html" class="sidebar-link">Vue3基础</a></li><li><a href="/study_note/notes/vue/vue3_watch.html" class="sidebar-link">Vue3.0 五种wacth分析</a></li><li><a href="/study_note/notes/vue/vue_slot.html" class="sidebar-link">Vue 插槽理解</a></li><li><a href="/study_note/notes/vue/vue_ref.html" aria-current="page" class="active sidebar-link">Vue3 响应式API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/study_note/notes/vue/vue_ref.html#shallowref" class="sidebar-link">shallowRef()</a></li><li class="sidebar-sub-header"><a href="/study_note/notes/vue/vue_ref.html#triggerref" class="sidebar-link">triggerRef()</a></li><li class="sidebar-sub-header"><a href="/study_note/notes/vue/vue_ref.html#shallowreactive" class="sidebar-link">shallowReactive()</a></li></ul></li><li><a href="/study_note/notes/vue/vue_emit.html" class="sidebar-link">Vue爷孙通信</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue3-响应式api"><a href="#vue3-响应式api" class="header-anchor">#</a> Vue3 响应式API</h1> <blockquote><p>工作中，一般都是直接用ref，或者reactive，虽然也没有什么影响，但是如果数据量一大，可能就有性能上的问题</p></blockquote> <h2 id="shallowref"><a href="#shallowref" class="header-anchor">#</a> shallowRef()</h2> <p><code>ref()</code>的浅层作用形式</p> <ul><li>类型</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> shallowRef<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> ShallowRef<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">ShallowRef</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token constant">T</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>详细信息
+和 <code>ref()</code> 不同，浅层 ref 的内部值将会原样存储和暴露，并且不会被深层递归地转为响应式。只有对 <code>.value</code> 的访问是响应式的。
+<code>shallowRef()</code> ==常常用于对大型数据结构的性能优化或是与外部的状态管理系统集成。==
+例如当<code>shallowRef()</code>中的数据是一个对象类型的时候，==当对象中的某一个值变化时，shallowRef是没有响应式，只有当一整个对象发生替换时，才有响应式。==</li> <li>示例</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">shallowRef</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 不会触发更改，对value外的数据没反应</span>
+state<span class="token punctuation">.</span>value<span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token comment">// 会触发更改，因为整个对象替换了</span>
+state<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="triggerref"><a href="#triggerref" class="header-anchor">#</a> triggerRef()</h2> <p>强制触发依赖于一个浅层 ref 的副作用，这通常在对浅引用的内部值进行深度变更后使用。</p> <ul><li>类型</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">triggerRef</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">ref</span><span class="token operator">:</span> ShallowRef</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>示例</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> shallow <span class="token operator">=</span> <span class="token function">shallowRef</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">greet</span><span class="token operator">:</span> <span class="token string">'Hello, world'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>
+<span class="token comment">// 触发该副作用第一次应该会打印 &quot;Hello, world&quot;</span>
+<span class="token function">watchEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token comment">// 因为watchEffect副作用会自动触发一次</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>shallow<span class="token punctuation">.</span>value<span class="token punctuation">.</span>greet<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 这次变更不应触发副作用，因为这个 ref 是浅层的</span>
+<span class="token comment">// 原本是不应该触发的，因为改变的不是.value，副作用也监听不到</span>
+<span class="token comment">// 但是通过triggerRef可以强制让浅层ref触发副作用。</span>
+shallow<span class="token punctuation">.</span>value<span class="token punctuation">.</span>greet <span class="token operator">=</span> <span class="token string">'Hello, universe'</span>
+
+<span class="token comment">// 打印 &quot;Hello, universe&quot;</span>
+<span class="token function">triggerRef</span><span class="token punctuation">(</span>shallow<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="shallowreactive"><a href="#shallowreactive" class="header-anchor">#</a> shallowReactive()</h2> <p><code>reactive()</code> 的浅层作用形式。</p> <ul><li>类型</li></ul> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">function</span> <span class="token generic-function"><span class="token function">shallowReactive</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> object<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>target<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li><p>详细信息
+和 <code>reactive()</code>不同，这里没有深层级的转换：一个浅层响应式对象里只有根级别的属性是响应式的。属性的值会被原样存储和暴露，这也意味着值为 ref 的属性不会被自动解包了。</p></li> <li><p>==谨慎使用==
+浅层数据结构应该只用于组件中的根级状态。请避免将其嵌套在深层次的响应式对象中，因为它创建的树具有不一致的响应行为，这可能很难理解和调试。</p></li> <li><p>示例</p></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">shallowReactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">nested</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">bar</span><span class="token operator">:</span> <span class="token number">2</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 更改状态自身的属性是响应式的</span>
+state<span class="token punctuation">.</span>foo<span class="token operator">++</span>
+
+<span class="token comment">// ...但下层嵌套对象不会被转为响应式</span>
+<span class="token function">isReactive</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>nested<span class="token punctuation">)</span> <span class="token comment">// false</span>
+
+<span class="token comment">// 不是响应式的</span>
+state<span class="token punctuation">.</span>nested<span class="token punctuation">.</span>bar<span class="token operator">++</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">2/18/2023, 1:46:45 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/study_note/notes/vue/vue_slot.html" class="prev">
+        Vue 插槽理解
+      </a></span> <span class="next"><a href="/study_note/notes/vue/vue_emit.html">
+        Vue爷孙通信
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/study_note/assets/js/app.5b9cbb0b.js" defer></script><script src="/study_note/assets/js/2.5695e3c8.js" defer></script><script src="/study_note/assets/js/12.beea3bc9.js" defer></script>
+  </body>
+</html>
