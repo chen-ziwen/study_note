@@ -1,0 +1,15 @@
+{
+  "name": "study_note",
+  "version": "1.0.0",
+  "description": "记录学习笔记",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "author": "chiko",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.8"
+  }
+}
